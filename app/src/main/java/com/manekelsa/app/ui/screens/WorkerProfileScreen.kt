@@ -44,14 +44,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.manekelsa.app.R
 import com.manekelsa.app.model.WorkerSkill
 import com.manekelsa.app.ui.components.AvailabilityToggle
 import com.manekelsa.app.ui.components.SkillIcon
+import com.manekelsa.app.ui.components.getSkillName
 import com.manekelsa.app.ui.theme.DeepSaffron
 import com.manekelsa.app.viewmodel.WorkerProfileViewModel
 
@@ -67,6 +71,7 @@ fun WorkerProfileScreen(
     workerId: String? = null,
     viewModel: WorkerProfileViewModel = viewModel()
 ) {
+    val context = LocalContext.current
     val isSaving by viewModel.isSaving.collectAsState()
     val saveSuccess by viewModel.saveSuccess.collectAsState()
     val errorMessage by viewModel.errorMessage.collectAsState()
@@ -94,7 +99,7 @@ fun WorkerProfileScreen(
 
     LaunchedEffect(saveSuccess) {
         if (saveSuccess == true) {
-            snackbarHostState.showSnackbar("✅ ಯಶಸ್ವಿಯಾಗಿ ಉಳಿಸಲಾಗಿದೆ!")
+            snackbarHostState.showSnackbar(context.getString(R.string.save_success))
             viewModel.clearSaveSuccess()
         }
     }
@@ -104,7 +109,7 @@ fun WorkerProfileScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = if (workerId == null) "ನೋಂದಣಿ" else "ನನ್ನ ಪ್ರೊಫೈಲ್",
+                        text = stringResource(if (workerId == null) R.string.profile_title_new else R.string.profile_title_edit),
                         fontWeight = FontWeight.Bold,
                         fontSize = 22.sp,
                         color = Color.White
@@ -136,7 +141,7 @@ fun WorkerProfileScreen(
 
             // ── Section header ────────────────────────────────────────────────
             Text(
-                text = "ನಿಮ್ಮ ಮಾಹಿತಿ",
+                text = stringResource(R.string.section_my_info),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onBackground
@@ -146,7 +151,7 @@ fun WorkerProfileScreen(
             OutlinedTextField(
                 value = nameInput,
                 onValueChange = { viewModel.nameInput.value = it },
-                label = { Text("ಹೆಸರು") },
+                label = { Text(stringResource(R.string.field_name)) },
                 leadingIcon = {
                     Icon(Icons.Filled.Person, contentDescription = null, tint = DeepSaffron)
                 },
@@ -159,7 +164,7 @@ fun WorkerProfileScreen(
             OutlinedTextField(
                 value = phoneInput,
                 onValueChange = { viewModel.phoneInput.value = it },
-                label = { Text("ಮೊಬೈಲ್ ನಂಬರ್") },
+                label = { Text(stringResource(R.string.field_phone)) },
                 leadingIcon = {
                     Icon(Icons.Filled.Phone, contentDescription = null, tint = DeepSaffron)
                 },
@@ -173,7 +178,7 @@ fun WorkerProfileScreen(
             OutlinedTextField(
                 value = areaInput,
                 onValueChange = { viewModel.areaInput.value = it },
-                label = { Text("ಪ್ರದೇಶ / ಬೀದಿ") },
+                label = { Text(stringResource(R.string.field_area)) },
                 leadingIcon = {
                     Icon(Icons.Filled.Place, contentDescription = null, tint = DeepSaffron)
                 },
@@ -186,7 +191,7 @@ fun WorkerProfileScreen(
             OutlinedTextField(
                 value = dailyRateInput,
                 onValueChange = { viewModel.dailyRateInput.value = it },
-                label = { Text("ದಿನದ ದರ (₹)") },
+                label = { Text(stringResource(R.string.field_daily_rate)) },
                 leadingIcon = {
                     Icon(Icons.Filled.Payments, contentDescription = null, tint = DeepSaffron)
                 },
@@ -198,7 +203,7 @@ fun WorkerProfileScreen(
 
             // ── Skill dropdown ────────────────────────────────────────────────
             Text(
-                text = "ಕೆಲಸದ ವಿಧ",
+                text = stringResource(R.string.field_skill),
                 style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.onBackground
             )
@@ -208,10 +213,10 @@ fun WorkerProfileScreen(
                 onExpandedChange = { skillDropdownExpanded = it }
             ) {
                 OutlinedTextField(
-                    value = selectedSkill.kannada,
+                    value = getSkillName(context, selectedSkill),
                     onValueChange = {},
                     readOnly = true,
-                    label = { Text("ಕೆಲಸ ಆಯ್ಕೆ ಮಾಡಿ") },
+                    label = { Text(stringResource(R.string.skill_select_hint)) },
                     leadingIcon = {
                         SkillIcon(skill = selectedSkill, size = 32.dp)
                     },
@@ -235,7 +240,7 @@ fun WorkerProfileScreen(
                                 ) {
                                     SkillIcon(skill = skill, size = 36.dp)
                                     Text(
-                                        text = skill.kannada,
+                                        text = getSkillName(context, skill),
                                         style = MaterialTheme.typography.bodyLarge
                                     )
                                 }
@@ -268,7 +273,7 @@ fun WorkerProfileScreen(
                     )
                 } else {
                     Text(
-                        text = if (workerId == null) "ನೋಂದಾಯಿಸಿ" else "ಉಳಿಸಿ",
+                        text = stringResource(if (workerId == null) R.string.button_register else R.string.button_save),
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold
                     )

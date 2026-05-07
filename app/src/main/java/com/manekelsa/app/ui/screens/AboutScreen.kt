@@ -34,10 +34,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.manekelsa.app.R
 import com.manekelsa.app.ui.theme.DeepSaffron
 import com.manekelsa.app.ui.theme.ForestGreen
 
@@ -52,7 +54,7 @@ fun AboutScreen() {
             TopAppBar(
                 title = {
                     Text(
-                        text = "ಅಪ್ಲಿಕೇಶನ್ ಬಗ್ಗೆ",
+                        text = stringResource(R.string.about_title),
                         fontWeight = FontWeight.Bold,
                         fontSize = 22.sp,
                         color = Color.White
@@ -90,14 +92,14 @@ fun AboutScreen() {
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "ಮನೆ-ಕೆಲಸ",
+                text = stringResource(R.string.app_name),
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
                 color = DeepSaffron
             )
 
             Text(
-                text = "ಡಿಜಿಟಲ್ ನಾಕ",
+                text = stringResource(R.string.app_tagline),
                 fontSize = 18.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -105,7 +107,7 @@ fun AboutScreen() {
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                text = "ಈ ಅಪ್ಲಿಕೇಶನ್ ಮನೆ ಕೆಲಸಗಾರರು ಮತ್ತು ನಿವಾಸಿಗಳನ್ನು ಸಂಪರ್ಕಿಸುತ್ತದೆ.",
+                text = stringResource(R.string.app_description),
                 style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onBackground
@@ -115,7 +117,7 @@ fun AboutScreen() {
 
             // How it works cards
             Text(
-                text = "ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ?",
+                text = stringResource(R.string.how_it_works),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.fillMaxWidth()
@@ -126,8 +128,8 @@ fun AboutScreen() {
             HowItWorksCard(
                 icon = Icons.Filled.CleaningServices,
                 iconColor = Color(0xFF1565C0),
-                title = "ಕೆಲಸಗಾರರು",
-                description = "ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಮಾಡಿ ಮತ್ತು ಇಂದು ಲಭ್ಯ ಎಂದು ತೋರಿಸಿ"
+                title = stringResource(R.string.about_workers_title),
+                description = stringResource(R.string.about_workers_desc)
             )
 
             Spacer(modifier = Modifier.height(10.dp))
@@ -135,8 +137,8 @@ fun AboutScreen() {
             HowItWorksCard(
                 icon = Icons.Filled.ToggleOn,
                 iconColor = ForestGreen,
-                title = "ಲಭ್ಯತೆ ಟಾಗಲ್",
-                description = "ಪ್ರತಿ ದಿನ ಬೆಳಿಗ್ಗೆ ಸ್ವಿಚ್ ಆನ್ ಮಾಡಿ, ಕೆಲಸ ಮುಗಿದ ನಂತರ ಆಫ್ ಮಾಡಿ"
+                title = stringResource(R.string.about_toggle_title),
+                description = stringResource(R.string.about_toggle_desc)
             )
 
             Spacer(modifier = Modifier.height(10.dp))
@@ -144,8 +146,8 @@ fun AboutScreen() {
             HowItWorksCard(
                 icon = Icons.Filled.Groups,
                 iconColor = DeepSaffron,
-                title = "ನಿವಾಸಿಗಳು",
-                description = "ಹತ್ತಿರದ ಲಭ್ಯ ಕೆಲಸಗಾರರನ್ನು ನೋಡಿ ಮತ್ತು ಆಯ್ಕೆ ಮಾಡಿ"
+                title = stringResource(R.string.about_residents_title),
+                description = stringResource(R.string.about_residents_desc)
             )
 
             Spacer(modifier = Modifier.height(10.dp))
@@ -153,14 +155,14 @@ fun AboutScreen() {
             HowItWorksCard(
                 icon = Icons.Filled.PhoneEnabled,
                 iconColor = Color(0xFF2E7D32),
-                title = "ನೇರ ಕರೆ",
-                description = "ಒಂದು ಟ್ಯಾಪ್‌ನಲ್ಲಿ ಕೆಲಸಗಾರರಿಗೆ ಕರೆ ಮಾಡಿ"
+                title = stringResource(R.string.about_call_title),
+                description = stringResource(R.string.about_call_desc)
             )
 
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                text = "ಆವೃತ್ತಿ 1.0",
+                text = stringResource(R.string.version),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

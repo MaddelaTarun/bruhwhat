@@ -27,15 +27,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.manekelsa.app.R
 import com.manekelsa.app.ui.theme.AvailableGreen
 import com.manekelsa.app.ui.theme.UnavailableGray
 
 /**
  * AvailabilityToggle — the hero component on the worker's profile screen.
- * Large, high-contrast, with clear Kannada labels.
+ * Large, high-contrast, with localized labels.
  */
 @Composable
 fun AvailabilityToggle(
@@ -73,15 +75,14 @@ fun AvailabilityToggle(
             Spacer(modifier = Modifier.width(12.dp))
             Column {
                 Text(
-                    text = if (isAvailable) "ಇಂದು ಲಭ್ಯ" else "ಇಂದು ಲಭ್ಯವಿಲ್ಲ",
+                    text = stringResource(if (isAvailable) R.string.available_today else R.string.unavailable_today),
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = textColor
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
-                    text = if (isAvailable) "ನಿವಾಸಿಗಳು ನಿಮ್ಮನ್ನು ನೋಡಬಹುದು"
-                    else "ನೀವು ಪಟ್ಟಿಯಲ್ಲಿ ಕಾಣಿಸುವುದಿಲ್ಲ",
+                    text = stringResource(if (isAvailable) R.string.available_description else R.string.unavailable_description),
                     fontSize = 13.sp,
                     color = textColor.copy(alpha = 0.75f)
                 )

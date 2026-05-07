@@ -40,6 +40,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.ui.res.stringResource
+import com.manekelsa.app.R
 import com.manekelsa.app.ui.components.SkillFilterChips
 import com.manekelsa.app.ui.components.WorkerCard
 import com.manekelsa.app.ui.theme.DeepSaffron
@@ -78,13 +80,13 @@ fun ResidentFeedScreen(
                 title = {
                     Column {
                         Text(
-                            text = "ಮನೆ-ಕೆಲಸ",
+                            text = stringResource(R.string.feed_title),
                             fontWeight = FontWeight.Bold,
                             fontSize = 22.sp,
                             color = Color.White
                         )
                         Text(
-                            text = "ಹತ್ತಿರದ ಕೆಲಸಗಾರರು",
+                            text = stringResource(R.string.feed_subtitle),
                             fontSize = 13.sp,
                             color = Color.White.copy(alpha = 0.85f)
                         )
@@ -110,14 +112,14 @@ fun ResidentFeedScreen(
                 onValueChange = { viewModel.setSearchQuery(it) },
                 placeholder = {
                     Text(
-                        text = "ಹೆಸರು ಅಥವಾ ಪ್ರದೇಶ ಹುಡುಕಿ...",
+                        text = stringResource(R.string.search_hint),
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 },
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.Search,
-                        contentDescription = "ಹುಡುಕಿ",
+                        contentDescription = stringResource(R.string.search_hint),
                         tint = DeepSaffron
                     )
                 },
@@ -137,7 +139,7 @@ fun ResidentFeedScreen(
             // ── Worker count label ────────────────────────────────────────────
             if (!isLoading) {
                 Text(
-                    text = "${workers.size} ಕೆಲಸಗಾರರು ಲಭ್ಯ",
+                    text = stringResource(R.string.workers_available_count, workers.size),
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.padding(horizontal = 20.dp, vertical = 4.dp)
@@ -203,13 +205,13 @@ private fun EmptyFeedMessage() {
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = "ಈಗ ಯಾರೂ ಲಭ್ಯವಿಲ್ಲ",
+                text = stringResource(R.string.no_workers_title),
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
+                text = stringResource(R.string.no_workers_subtitle),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

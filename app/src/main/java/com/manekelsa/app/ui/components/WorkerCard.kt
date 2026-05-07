@@ -1,5 +1,6 @@
 package com.manekelsa.app.ui.components
 
+import android.content.Context
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
@@ -38,11 +39,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.manekelsa.app.R
 import com.manekelsa.app.model.WorkerProfile
+import com.manekelsa.app.model.WorkerSkill
 import com.manekelsa.app.ui.theme.AvailableGreen
 import com.manekelsa.app.ui.theme.DeepSaffron
 
@@ -58,6 +63,7 @@ fun WorkerCard(
     isThumbsUpAnimating: Boolean,
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
     val thumbsUpScale by animateFloatAsState(
         targetValue = if (isThumbsUpAnimating) 1.4f else 1f,
         animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy),
@@ -109,7 +115,7 @@ fun WorkerCard(
                     )
                     Spacer(modifier = Modifier.height(2.dp))
                     Text(
-                        text = worker.skill.kannada,
+                        text = getSkillName(context, worker.skill),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -143,7 +149,7 @@ fun WorkerCard(
                 }
 
                 Text(
-                    text = "₹${worker.dailyRate}/ದಿನ",
+                    text = stringResource(R.string.daily_rate_format, worker.dailyRate),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = DeepSaffron
@@ -168,7 +174,7 @@ fun WorkerCard(
                     ) {
                         Icon(
                             imageVector = Icons.Filled.ThumbUp,
-                            contentDescription = "ಒಳ್ಳೆಯದು",
+                            contentDescription = stringResource(R.string.thumbs_up),
                             tint = thumbsUpColor,
                             modifier = Modifier
                                 .size(28.dp)
@@ -196,12 +202,12 @@ fun WorkerCard(
                 ) {
                     Icon(
                         imageVector = Icons.Filled.Call,
-                        contentDescription = "ಕರೆ ಮಾಡಿ",
+                        contentDescription = stringResource(R.string.call_button),
                         modifier = Modifier.size(22.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "ಕರೆ ಮಾಡಿ",
+                        text = stringResource(R.string.call_button),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold
                     )
@@ -214,7 +220,7 @@ fun WorkerCard(
 @Composable
 fun AvailabilityBadge(isAvailable: Boolean) {
     val bgColor = if (isAvailable) AvailableGreen else Color(0xFF9E9E9E)
-    val label = if (isAvailable) "ಲಭ್ಯ" else "ಇಲ್ಲ"
+    val label = stringResource(if (isAvailable) R.string.available_badge else R.string.unavailable_badge)
 
     Box(
         contentAlignment = Alignment.Center,
@@ -229,4 +235,17 @@ fun AvailabilityBadge(isAvailable: Boolean) {
             fontSize = 13.sp
         )
     }
+}
+
+// Helper function to get localized skill name
+fun getSkillName(context: Context, skill: WorkerSkill): String {
+    return context.getString(when (skill) {
+        WorkerSkill.CLEANING -> R.string.skill_cleaning
+        WorkerSkill.GARDENING -> R.string.skill_gardening
+        WorkerSkill.COOKING -> R.string.skill_cooking
+        WorkerSkill.WASHING -> R.string.skill_washing
+        WorkerSkill.SECURITY -> R.string.skill_security
+        WorkerSkill.DRIVING -> R.string.skill_driving
+        WorkerSkill.OTHER -> R.string.skill_other
+    })
 }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="available_green">#2E7D32</color>
+    <color name="dark_text">#1A1A1A</color>
+    <color name="error_red">#D32F2F</color>
+    <color name="forest_green">#1B7A3E</color>
+    <color name="off_white">#FFF8F2</color>
+    <color name="saffron_dark">#CC5500</color>
+    <color name="saffron_primary">#FF6B00</color>
+    <color name="white">#FFFFFF</color>
+    <string name="about_call_desc">Call workers with one tap</string>
+    <string name="about_call_title">Direct Call</string>
+    <string name="about_residents_desc">See nearby available workers and choose</string>
+    <string name="about_residents_title">Residents</string>
+    <string name="about_title">About App</string>
+    <string name="about_toggle_desc">Turn switch on every morning, off after work is done</string>
+    <string name="about_toggle_title">Availability Toggle</string>
+    <string name="about_workers_desc">Create your profile and show you\'re available today</string>
+    <string name="about_workers_title">Workers</string>
+    <string name="app_description">Connecting domestic workers and residents</string>
+    <string name="app_name">Mane-Kelsa</string>
+    <string name="app_tagline">Digital Naka</string>
+    <string name="available_badge">Available</string>
+    <string name="available_description">Residents can see you</string>
+    <string name="available_today">Available Today</string>
+    <string name="button_continue">Continue</string>
+    <string name="button_register">Register</string>
+    <string name="button_save">Save</string>
+    <string name="call_button">Call</string>
+    <string name="daily_rate_format">₹%d/day</string>
+    <string name="error_fill_all">Please fill all information</string>
+    <string name="error_load_failed">Could not load data</string>
+    <string name="error_save_failed">Could not save</string>
+    <string name="error_toggle_failed">Could not change status</string>
+    <string name="error_update_failed">Could not update</string>
+    <string name="feed_subtitle">Nearby Workers</string>
+    <string name="feed_title">Mane-Kelsa</string>
+    <string name="field_area">Area / Street</string>
+    <string name="field_daily_rate">Daily Rate (₹)</string>
+    <string name="field_name">Name</string>
+    <string name="field_phone">Mobile Number</string>
+    <string name="field_skill">Type of Work</string>
+    <string name="filter_all">All</string>
+    <string name="gcm_defaultSenderId" translatable="false">289717666604</string>
+    <string name="google_api_key" translatable="false">AIzaSyCCAwcvk8zIuzqGLkzXqJq39Kg-stPkC1A</string>
+    <string name="google_app_id" translatable="false">1:289717666604:android:a61780001d21cdfc45a289</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCCAwcvk8zIuzqGLkzXqJq39Kg-stPkC1A</string>
+    <string name="google_storage_bucket" translatable="false">asalamvalaikum-5de7f.firebasestorage.app</string>
+    <string name="how_it_works">How It Works?</string>
+    <string name="language_english">English</string>
+    <string name="language_hindi">हिंदी (Hindi)</string>
+    <string name="language_kannada">ಕನ್ನಡ (Kannada)</string>
+    <string name="language_selection_subtitle">Select your preferred language</string>
+    <string name="language_selection_title">Choose Your Language</string>
+    <string name="no_workers_subtitle">Please try again later</string>
+    <string name="no_workers_title">No one available right now</string>
+    <string name="profile_title_edit">My Profile</string>
+    <string name="profile_title_new">Register</string>
+    <string name="project_id" translatable="false">asalamvalaikum-5de7f</string>
+    <string name="save_success">✅ Saved successfully!</string>
+    <string name="search_hint">Search by name or area...</string>
+    <string name="section_my_info">Your Information</string>
+    <string name="skill_cleaning">Cleaning</string>
+    <string name="skill_cooking">Cooking</string>
+    <string name="skill_driving">Driving</string>
+    <string name="skill_gardening">Gardening</string>
+    <string name="skill_other">Other</string>
+    <string name="skill_security">Security</string>
+    <string name="skill_select_hint">Select work type</string>
+    <string name="skill_washing">Washing</string>
+    <string name="tab_about">About</string>
+    <string name="tab_profile">My Profile</string>
+    <string name="tab_workers">Workers</string>
+    <string name="thumbs_up">Good</string>
+    <string name="unavailable_badge">Not Available</string>
+    <string name="unavailable_description">You won\'t appear in the list</string>
+    <string name="unavailable_today">Not Available Today</string>
+    <string name="version">Version 1.0</string>
+    <string name="workers_available_count">%d workers available</string>
+    <style name="Theme.ManeKelsa" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/saffron_primary</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

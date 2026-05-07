@@ -3,30 +3,31 @@ package com.manekelsa.app.ui.components
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.manekelsa.app.R
 import com.manekelsa.app.model.WorkerSkill
+import com.manekelsa.app.ui.components.skillIconData
 import com.manekelsa.app.ui.theme.DeepSaffron
 
 /**
  * SkillFilterChips — horizontal scrollable row of skill filter chips.
- * Includes an "ಎಲ್ಲಾ" (All) chip to clear the filter.
+ * Includes an "All" chip to clear the filter.
  */
 @Composable
 fun SkillFilterChips(
@@ -34,6 +35,8 @@ fun SkillFilterChips(
     onSkillSelected: (WorkerSkill?) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
+    
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -48,7 +51,7 @@ fun SkillFilterChips(
             onClick = { onSkillSelected(null) },
             label = {
                 Text(
-                    text = "ಎಲ್ಲಾ",
+                    text = stringResource(R.string.filter_all),
                     fontSize = 15.sp
                 )
             },
@@ -67,7 +70,7 @@ fun SkillFilterChips(
                 onClick = { onSkillSelected(if (selectedSkill == skill) null else skill) },
                 label = {
                     Text(
-                        text = skill.kannada,
+                        text = getSkillName(context, skill),
                         fontSize = 14.sp
                     )
                 },

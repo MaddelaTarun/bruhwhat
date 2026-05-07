@@ -62,7 +62,7 @@ class WorkerProfileViewModel : ViewModel() {
         val rate = dailyRateInput.value.trim().toIntOrNull() ?: 0
 
         if (name.isBlank() || phone.isBlank() || area.isBlank()) {
-            _errorMessage.value = "ದಯವಿಟ್ಟು ಎಲ್ಲಾ ಮಾಹಿತಿ ತುಂಬಿರಿ"
+            _errorMessage.value = "Please fill all information" // Will be localized in UI
             return
         }
 
@@ -81,7 +81,7 @@ class WorkerProfileViewModel : ViewModel() {
             repository.addWorker(profile) { id, error ->
                 _isSaving.value = false
                 if (error != null) {
-                    _errorMessage.value = "ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ: ${error.message}"
+                    _errorMessage.value = "Could not save: ${error.message}"
                     _saveSuccess.value = false
                 } else {
                     _saveSuccess.value = true
@@ -91,7 +91,7 @@ class WorkerProfileViewModel : ViewModel() {
             repository.updateWorker(profile) { error ->
                 _isSaving.value = false
                 if (error != null) {
-                    _errorMessage.value = "ಅಪ್‌ಡೇಟ್ ಆಗಲಿಲ್ಲ: ${error.message}"
+                    _errorMessage.value = "Could not update: ${error.message}"
                     _saveSuccess.value = false
                 } else {
                     _saveSuccess.value = true
@@ -107,7 +107,7 @@ class WorkerProfileViewModel : ViewModel() {
             if (error != null) {
                 // Revert on failure
                 isAvailable.value = !newValue
-                _errorMessage.value = "ಸ್ಥಿತಿ ಬದಲಾಯಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ"
+                _errorMessage.value = "Could not change status"
             }
         }
     }
