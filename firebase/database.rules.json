@@ -1,0 +1,47 @@
+{
+  "rules": {
+    "workers": {
+      // Anyone can read the workers list (public directory)
+      ".read": true,
+
+      "$workerId": {
+        // Anyone can create a new worker profile
+        ".write": true,
+
+        // Validate required fields on write
+        ".validate": "newData.hasChildren(['name', 'skill', 'phoneNumber', 'area', 'dailyRate', 'isAvailable'])",
+
+        "name": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 100"
+        },
+        "skill": {
+          ".validate": "newData.isString() && newData.val().matches(/^(CLEANING|GARDENING|COOKING|WASHING|SECURITY|DRIVING|OTHER)$/)"
+        },
+        "phoneNumber": {
+          ".validate": "newData.isString() && newData.val().length >= 10"
+        },
+        "area": {
+          ".validate": "newData.isString() && newData.val().length > 0"
+        },
+        "dailyRate": {
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        },
+        "isAvailable": {
+          ".validate": "newData.isBoolean()"
+        },
+        "thumbsUp": {
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        },
+        "photoUrl": {
+          ".validate": "newData.isString()"
+        },
+        "latitude": {
+          ".validate": "newData.isNumber()"
+        },
+        "longitude": {
+          ".validate": "newData.isNumber()"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="saffron_primary">#FF6B00</color>
+    <color name="saffron_dark">#CC5500</color>
+    <color name="forest_green">#1B7A3E</color>
+    <color name="available_green">#2E7D32</color>
+    <color name="off_white">#FFF8F2</color>
+    <color name="white">#FFFFFF</color>
+    <color name="dark_text">#1A1A1A</color>
+    <color name="error_red">#D32F2F</color>
+</resources>

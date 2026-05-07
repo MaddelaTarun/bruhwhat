@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base theme — Compose handles most theming; this is for the window/status bar -->
+    <style name="Theme.ManeKelsa" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/saffron_primary</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

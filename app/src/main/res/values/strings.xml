@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    strings.xml — 100% Kannada localization for Mane-Kelsa app.
+    All user-facing strings are in Kannada (ಕನ್ನಡ).
+-->
+<resources>
+    <!-- App -->
+    <string name="app_name">ಮನೆ-ಕೆಲಸ</string>
+    <string name="app_tagline">ಡಿಜಿಟಲ್ ನಾಕ</string>
+    <string name="app_description">ಮನೆ ಕೆಲಸಗಾರರು ಮತ್ತು ನಿವಾಸಿಗಳನ್ನು ಸಂಪರ್ಕಿಸುತ್ತದೆ</string>
+
+    <!-- Navigation tabs -->
+    <string name="tab_workers">ಕೆಲಸಗಾರರು</string>
+    <string name="tab_profile">ನನ್ನ ಪ್ರೊಫೈಲ್</string>
+    <string name="tab_about">ಬಗ್ಗೆ</string>
+
+    <!-- Resident Feed Screen -->
+    <string name="feed_title">ಮನೆ-ಕೆಲಸ</string>
+    <string name="feed_subtitle">ಹತ್ತಿರದ ಕೆಲಸಗಾರರು</string>
+    <string name="search_hint">ಹೆಸರು ಅಥವಾ ಪ್ರದೇಶ ಹುಡುಕಿ...</string>
+    <string name="filter_all">ಎಲ್ಲಾ</string>
+    <string name="workers_available_count">%d ಕೆಲಸಗಾರರು ಲಭ್ಯ</string>
+    <string name="no_workers_title">ಈಗ ಯಾರೂ ಲಭ್ಯವಿಲ್ಲ</string>
+    <string name="no_workers_subtitle">ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
+
+    <!-- Worker Card -->
+    <string name="call_button">ಕರೆ ಮಾಡಿ</string>
+    <string name="thumbs_up">ಒಳ್ಳೆಯದು</string>
+    <string name="daily_rate_format">₹%d/ದಿನ</string>
+    <string name="available_badge">ಲಭ್ಯ</string>
+    <string name="unavailable_badge">ಇಲ್ಲ</string>
+
+    <!-- Worker Skills -->
+    <string name="skill_cleaning">ಸ್ವಚ್ಛತೆ</string>
+    <string name="skill_gardening">ತೋಟಗಾರಿಕೆ</string>
+    <string name="skill_cooking">ಅಡುಗೆ</string>
+    <string name="skill_washing">ಬಟ್ಟೆ ತೊಳೆಯುವುದು</string>
+    <string name="skill_security">ಭದ್ರತೆ</string>
+    <string name="skill_driving">ಚಾಲನೆ</string>
+    <string name="skill_other">ಇತರೆ</string>
+
+    <!-- Worker Profile Screen -->
+    <string name="profile_title_new">ನೋಂದಣಿ</string>
+    <string name="profile_title_edit">ನನ್ನ ಪ್ರೊಫೈಲ್</string>
+    <string name="section_my_info">ನಿಮ್ಮ ಮಾಹಿತಿ</string>
+    <string name="field_name">ಹೆಸರು</string>
+    <string name="field_phone">ಮೊಬೈಲ್ ನಂಬರ್</string>
+    <string name="field_area">ಪ್ರದೇಶ / ಬೀದಿ</string>
+    <string name="field_daily_rate">ದಿನದ ದರ (₹)</string>
+    <string name="field_skill">ಕೆಲಸದ ವಿಧ</string>
+    <string name="skill_select_hint">ಕೆಲಸ ಆಯ್ಕೆ ಮಾಡಿ</string>
+    <string name="button_register">ನೋಂದಾಯಿಸಿ</string>
+    <string name="button_save">ಉಳಿಸಿ</string>
+    <string name="save_success">✅ ಯಶಸ್ವಿಯಾಗಿ ಉಳಿಸಲಾಗಿದೆ!</string>
+    <string name="error_fill_all">ದಯವಿಟ್ಟು ಎಲ್ಲಾ ಮಾಹಿತಿ ತುಂಬಿರಿ</string>
+    <string name="error_save_failed">ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <string name="error_update_failed">ಅಪ್‌ಡೇಟ್ ಆಗಲಿಲ್ಲ</string>
+    <string name="error_load_failed">ಡೇಟಾ ಲೋಡ್ ಆಗಲಿಲ್ಲ</string>
+    <string name="error_toggle_failed">ಸ್ಥಿತಿ ಬದಲಾಯಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+
+    <!-- Availability Toggle -->
+    <string name="available_today">ಇಂದು ಲಭ್ಯ</string>
+    <string name="unavailable_today">ಇಂದು ಲಭ್ಯವಿಲ್ಲ</string>
+    <string name="available_description">ನಿವಾಸಿಗಳು ನಿಮ್ಮನ್ನು ನೋಡಬಹುದು</string>
+    <string name="unavailable_description">ನೀವು ಪಟ್ಟಿಯಲ್ಲಿ ಕಾಣಿಸುವುದಿಲ್ಲ</string>
+
+    <!-- About Screen -->
+    <string name="about_title">ಅಪ್ಲಿಕೇಶನ್ ಬಗ್ಗೆ</string>
+    <string name="how_it_works">ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ?</string>
+    <string name="about_workers_title">ಕೆಲಸಗಾರರು</string>
+    <string name="about_workers_desc">ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಮಾಡಿ ಮತ್ತು ಇಂದು ಲಭ್ಯ ಎಂದು ತೋರಿಸಿ</string>
+    <string name="about_toggle_title">ಲಭ್ಯತೆ ಟಾಗಲ್</string>
+    <string name="about_toggle_desc">ಪ್ರತಿ ದಿನ ಬೆಳಿಗ್ಗೆ ಸ್ವಿಚ್ ಆನ್ ಮಾಡಿ, ಕೆಲಸ ಮುಗಿದ ನಂತರ ಆಫ್ ಮಾಡಿ</string>
+    <string name="about_residents_title">ನಿವಾಸಿಗಳು</string>
+    <string name="about_residents_desc">ಹತ್ತಿರದ ಲಭ್ಯ ಕೆಲಸಗಾರರನ್ನು ನೋಡಿ ಮತ್ತು ಆಯ್ಕೆ ಮಾಡಿ</string>
+    <string name="about_call_title">ನೇರ ಕರೆ</string>
+    <string name="about_call_desc">ಒಂದು ಟ್ಯಾಪ್‌ನಲ್ಲಿ ಕೆಲಸಗಾರರಿಗೆ ಕರೆ ಮಾಡಿ</string>
+    <string name="version">ಆವೃತ್ತಿ 1.0</string>
+</resources>
