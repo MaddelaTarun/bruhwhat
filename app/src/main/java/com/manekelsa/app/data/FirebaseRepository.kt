@@ -3,6 +3,8 @@ package com.manekelsa.app.data
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.MutableData
+import com.google.firebase.database.Transaction
 import com.google.firebase.database.ValueEventListener
 import com.manekelsa.app.model.WorkerProfile
 import com.manekelsa.app.model.WorkerSkill
@@ -19,75 +21,40 @@ class FirebaseRepository {
     private val database = FirebaseDatabase.getInstance()
     private val workersRef = database.getReference("workers")
 
-    // ─── Read: stream all available workers ──────────────────────────────────
+    // ─── Helpers: snapshot → model ───────────────────────────────────────────
 
-    /**
-     * Returns a Flow that emits the full list of workers whenever Firebase data changes.
-     * Filtered to isAvailable == true for the resident feed.
-     */
-    fun getAvailableWorkers(): Flow<List<WorkerProfile>> = callbackFlow {
-        val listener = object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val workers = snapshot.children.mapNotNull { child ->
-                    try {
-                        val id = child.key ?: return@mapNotNull null
-                        WorkerProfile(
-                            id = id,
-                            name = child.child("name").getValue(String::class.java) ?: "",
-                            skill = WorkerSkill.valueOf(
-                                child.child("skill").getValue(String::class.java) ?: "CLEANING"
-                            ),
-                            phoneNumber = child.child("phoneNumber").getValue(String::class.java) ?: "",
-                            area = child.child("area").getValue(String::class.java) ?: "",
-                            dailyRate = child.child("dailyRate").getValue(Int::class.java) ?: 0,
-                            photoUrl = child.child("photoUrl").getValue(String::class.java) ?: "",
-                            isAvailable = child.child("isAvailable").getValue(Boolean::class.java) ?: false,
-                            thumbsUp = child.child("thumbsUp").getValue(Int::class.java) ?: 0,
-                            latitude = child.child("latitude").getValue(Double::class.java) ?: 0.0,
-                            longitude = child.child("longitude").getValue(Double::class.java) ?: 0.0
-                        )
-                    } catch (e: Exception) {
-                        null
-                    }
-                }.filter { it.isAvailable }
-                trySend(workers)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                close(error.toException())
-            }
+    private fun snapshotToWorker(child: DataSnapshot): WorkerProfile? {
+        val id = child.key ?: return null
+        return try {
+            WorkerProfile(
+                id = id,
+                name = child.child("name").getValue(String::class.java) ?: "",
+                skill = WorkerSkill.valueOf(
+                    child.child("skill").getValue(String::class.java) ?: "CLEANING"
+                ),
+                phoneNumber = child.child("phoneNumber").getValue(String::class.java) ?: "",
+                area = child.child("area").getValue(String::class.java) ?: "",
+                dailyRate = child.child("dailyRate").getValue(Int::class.java) ?: 0,
+                photoUrl = child.child("photoUrl").getValue(String::class.java) ?: "",
+                isAvailable = child.child("isAvailable").getValue(Boolean::class.java) ?: false,
+                thumbsUp = child.child("thumbsUp").getValue(Int::class.java) ?: 0,
+                latitude = child.child("latitude").getValue(Double::class.java) ?: 0.0,
+                longitude = child.child("longitude").getValue(Double::class.java) ?: 0.0
+            )
+        } catch (e: Exception) {
+            null
         }
-        workersRef.addValueEventListener(listener)
-        awaitClose { workersRef.removeEventListener(listener) }
     }
 
-    /**
-     * Returns a Flow of ALL workers (for admin / worker management screens).
-     */
-    fun getAllWorkers(): Flow<List<WorkerProfile>> = callbackFlow {
+    private fun listenToWorkers(
+        filterAvailable: Boolean = false
+    ): Flow<List<WorkerProfile>> = callbackFlow {
         val listener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val workers = snapshot.children.mapNotNull { child ->
-                    try {
-                        val id = child.key ?: return@mapNotNull null
-                        WorkerProfile(
-                            id = id,
-                            name = child.child("name").getValue(String::class.java) ?: "",
-                            skill = WorkerSkill.valueOf(
-                                child.child("skill").getValue(String::class.java) ?: "CLEANING"
-                            ),
-                            phoneNumber = child.child("phoneNumber").getValue(String::class.java) ?: "",
-                            area = child.child("area").getValue(String::class.java) ?: "",
-                            dailyRate = child.child("dailyRate").getValue(Int::class.java) ?: 0,
-                            photoUrl = child.child("photoUrl").getValue(String::class.java) ?: "",
-                            isAvailable = child.child("isAvailable").getValue(Boolean::class.java) ?: false,
-                            thumbsUp = child.child("thumbsUp").getValue(Int::class.java) ?: 0,
-                            latitude = child.child("latitude").getValue(Double::class.java) ?: 0.0,
-                            longitude = child.child("longitude").getValue(Double::class.java) ?: 0.0
-                        )
-                    } catch (e: Exception) {
-                        null
-                    }
+                    snapshotToWorker(child)
+                }.let { list ->
+                    if (filterAvailable) list.filter { it.isAvailable } else list
                 }
                 trySend(workers)
             }
@@ -99,6 +66,18 @@ class FirebaseRepository {
         workersRef.addValueEventListener(listener)
         awaitClose { workersRef.removeEventListener(listener) }
     }
+
+    // ─── Read: stream all available workers ──────────────────────────────────
+
+    /**
+     * Returns a Flow that emits available workers whenever Firebase data changes.
+     */
+    fun getAvailableWorkers(): Flow<List<WorkerProfile>> = listenToWorkers(filterAvailable = true)
+
+    /**
+     * Returns a Flow of ALL workers.
+     */
+    fun getAllWorkers(): Flow<List<WorkerProfile>> = listenToWorkers()
 
     // ─── Write: create / update worker ───────────────────────────────────────
 
@@ -147,12 +126,21 @@ class FirebaseRepository {
      */
     fun addThumbsUp(workerId: String, onResult: (Exception?) -> Unit) {
         val thumbsRef = workersRef.child(workerId).child("thumbsUp")
-        thumbsRef.get().addOnSuccessListener { snapshot ->
-            val current = snapshot.getValue(Int::class.java) ?: 0
-            thumbsRef.setValue(current + 1)
-                .addOnSuccessListener { onResult(null) }
-                .addOnFailureListener { onResult(it) }
-        }.addOnFailureListener { onResult(it) }
+        thumbsRef.runTransaction(object : Transaction.Handler {
+            override fun doTransaction(mutableData: MutableData): Transaction.Result {
+                val current = mutableData.getValue(Int::class.java) ?: 0
+                mutableData.value = current + 1
+                return Transaction.success(mutableData)
+            }
+
+            override fun onComplete(error: DatabaseError?, committed: Boolean, data: DataSnapshot?) {
+                if (error != null) {
+                    onResult(error.toException())
+                } else {
+                    onResult(null)
+                }
+            }
+        })
     }
 
     // ─── Helpers ──────────────────────────────────────────────────────────────

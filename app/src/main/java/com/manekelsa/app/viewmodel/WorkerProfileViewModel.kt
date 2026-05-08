@@ -7,6 +7,7 @@ import com.manekelsa.app.model.WorkerProfile
 import com.manekelsa.app.model.WorkerSkill
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 /**
@@ -40,17 +41,16 @@ class WorkerProfileViewModel : ViewModel() {
 
     fun loadProfile(workerId: String) {
         viewModelScope.launch {
-            repository.getAllWorkers().collect { workers ->
-                val profile = workers.find { it.id == workerId }
-                profile?.let {
-                    _workerProfile.value = it
-                    nameInput.value = it.name
-                    phoneInput.value = it.phoneNumber
-                    areaInput.value = it.area
-                    dailyRateInput.value = it.dailyRate.toString()
-                    selectedSkill.value = it.skill
-                    isAvailable.value = it.isAvailable
-                }
+            val workers = repository.getAllWorkers().first()
+            val profile = workers.find { it.id == workerId }
+            profile?.let {
+                _workerProfile.value = it
+                nameInput.value = it.name
+                phoneInput.value = it.phoneNumber
+                areaInput.value = it.area
+                dailyRateInput.value = it.dailyRate.toString()
+                selectedSkill.value = it.skill
+                isAvailable.value = it.isAvailable
             }
         }
     }

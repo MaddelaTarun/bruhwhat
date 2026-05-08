@@ -65,7 +65,7 @@ class MainActivity : ComponentActivity() {
         }
 
         // UNCOMMENT BELOW TO SEED TEST DATA (run once, then comment out again)
-        com.manekelsa.app.data.FirebaseRepository().seedMockData()
+        // com.manekelsa.app.data.FirebaseRepository().seedMockData()
     }
 
     private fun setAppLocale(context: Context, languageCode: String) {
@@ -73,7 +73,6 @@ class MainActivity : ComponentActivity() {
         Locale.setDefault(locale)
         val config = context.resources.configuration
         config.setLocale(locale)
-        context.createConfigurationContext(config)
         context.resources.updateConfiguration(config, context.resources.displayMetrics)
     }
 }
