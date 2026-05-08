@@ -2,6 +2,7 @@ package com.manekelsa.app.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.manekelsa.app.R
 import com.manekelsa.app.data.FirebaseRepository
 import com.manekelsa.app.model.WorkerProfile
 import com.manekelsa.app.model.WorkerSkill
@@ -43,8 +44,8 @@ class WorkerFeedViewModel : ViewModel() {
     private val _isLoading = MutableStateFlow(true)
     val isLoading: StateFlow<Boolean> = _isLoading
 
-    private val _errorMessage = MutableStateFlow<String?>(null)
-    val errorMessage: StateFlow<String?> = _errorMessage
+    private val _errorMessageRes = MutableStateFlow<Int?>(null)
+    val errorMessageRes: StateFlow<Int?> = _errorMessageRes
 
     // Thumbs-up feedback (workerId -> true means animation triggered)
     private val _thumbsUpFeedback = MutableStateFlow<Set<String>>(emptySet())
@@ -84,7 +85,7 @@ class WorkerFeedViewModel : ViewModel() {
                     _isLoading.value = false
                 }
             } catch (e: Exception) {
-                _errorMessage.value = "ಡೇಟಾ ಲೋಡ್ ಆಗಲಿಲ್ಲ: ${e.message}"
+                _errorMessageRes.value = R.string.error_load_failed
                 _isLoading.value = false
             }
         }
@@ -115,7 +116,7 @@ class WorkerFeedViewModel : ViewModel() {
     }
 
     fun clearError() {
-        _errorMessage.value = null
+        _errorMessageRes.value = null
     }
 
     // ─── Haversine distance formula ───────────────────────────────────────────

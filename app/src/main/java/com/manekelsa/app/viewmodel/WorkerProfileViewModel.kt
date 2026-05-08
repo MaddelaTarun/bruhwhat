@@ -2,6 +2,7 @@ package com.manekelsa.app.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.manekelsa.app.R
 import com.manekelsa.app.data.FirebaseRepository
 import com.manekelsa.app.model.WorkerProfile
 import com.manekelsa.app.model.WorkerSkill
@@ -28,8 +29,8 @@ class WorkerProfileViewModel : ViewModel() {
     private val _saveSuccess = MutableStateFlow<Boolean?>(null)
     val saveSuccess: StateFlow<Boolean?> = _saveSuccess
 
-    private val _errorMessage = MutableStateFlow<String?>(null)
-    val errorMessage: StateFlow<String?> = _errorMessage
+    private val _errorMessageRes = MutableStateFlow<Int?>(null)
+    val errorMessageRes: StateFlow<Int?> = _errorMessageRes
 
     // Form fields
     val nameInput = MutableStateFlow("")
@@ -62,7 +63,7 @@ class WorkerProfileViewModel : ViewModel() {
         val rate = dailyRateInput.value.trim().toIntOrNull() ?: 0
 
         if (name.isBlank() || phone.isBlank() || area.isBlank()) {
-            _errorMessage.value = "Please fill all information" // Will be localized in UI
+            _errorMessageRes.value = R.string.error_fill_all
             return
         }
 
@@ -81,7 +82,7 @@ class WorkerProfileViewModel : ViewModel() {
             repository.addWorker(profile) { id, error ->
                 _isSaving.value = false
                 if (error != null) {
-                    _errorMessage.value = "Could not save: ${error.message}"
+                    _errorMessageRes.value = R.string.error_save_failed
                     _saveSuccess.value = false
                 } else {
                     _saveSuccess.value = true
@@ -91,7 +92,7 @@ class WorkerProfileViewModel : ViewModel() {
             repository.updateWorker(profile) { error ->
                 _isSaving.value = false
                 if (error != null) {
-                    _errorMessage.value = "Could not update: ${error.message}"
+                    _errorMessageRes.value = R.string.error_update_failed
                     _saveSuccess.value = false
                 } else {
                     _saveSuccess.value = true
@@ -107,13 +108,13 @@ class WorkerProfileViewModel : ViewModel() {
             if (error != null) {
                 // Revert on failure
                 isAvailable.value = !newValue
-                _errorMessage.value = "Could not change status"
+                _errorMessageRes.value = R.string.error_toggle_failed
             }
         }
     }
 
     fun clearError() {
-        _errorMessage.value = null
+        _errorMessageRes.value = null
     }
 
     fun clearSaveSuccess() {

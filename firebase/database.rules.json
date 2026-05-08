@@ -5,8 +5,8 @@
       ".read": true,
 
       "$workerId": {
-        // Anyone can create a new worker profile
-        ".write": true,
+        // Authenticated users can write, or new profile creation without auth
+        ".write": "auth != null || !data.exists()",
 
         // Validate required fields on write
         ".validate": "newData.hasChildren(['name', 'skill', 'phoneNumber', 'area', 'dailyRate', 'isAvailable'])",

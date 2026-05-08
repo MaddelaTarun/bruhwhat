@@ -36,11 +36,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.compose.ui.res.stringResource
 import com.manekelsa.app.R
 import com.manekelsa.app.ui.components.SkillFilterChips
 import com.manekelsa.app.ui.components.WorkerCard
@@ -59,7 +59,7 @@ fun ResidentFeedScreen(
     val context = LocalContext.current
     val workers by viewModel.workers.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
-    val errorMessage by viewModel.errorMessage.collectAsState()
+    val errorMessageRes by viewModel.errorMessageRes.collectAsState()
     val selectedSkill by viewModel.selectedSkill.collectAsState()
     val searchQuery by viewModel.searchQuery.collectAsState()
     val thumbsUpFeedback by viewModel.thumbsUpFeedback.collectAsState()
@@ -67,7 +67,8 @@ fun ResidentFeedScreen(
     val snackbarHostState = remember { SnackbarHostState() }
 
     // Show error in snackbar
-    LaunchedEffect(errorMessage) {
+    val errorMessage = errorMessageRes?.let { context.getString(it) }
+    LaunchedEffect(errorMessageRes) {
         errorMessage?.let {
             snackbarHostState.showSnackbar(it)
             viewModel.clearError()

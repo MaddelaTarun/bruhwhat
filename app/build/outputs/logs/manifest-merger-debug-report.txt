@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:2:1-31:12
-INJECTED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:2:1-31:12
-INJECTED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:2:1-31:12
-INJECTED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:2:1-31:12
+ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:2:1-32:12
 MERGED from [androidx.navigation:navigation-common:2.7.7] /home/t/.gradle/caches/9.0.0/transforms/16934222f20cdaf7185dea938942697a/transformed/navigation-common-2.7.7/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-runtime:2.7.7] /home/t/.gradle/caches/9.0.0/transforms/a3f7ed667a5284c314535e5d1fd29d81/transformed/navigation-runtime-2.7.7/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] /home/t/.gradle/caches/9.0.0/transforms/d26216135ea904757ffd2d76545c1846/transformed/navigation-common-ktx-2.7.7/AndroidManifest.xml:2:1-7:12
@@ -121,19 +121,21 @@ uses-permission#android.permission.CALL_PHONE
 ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:5:5-69
 	android:name
 		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:5:22-66
-uses-permission#android.permission.READ_EXTERNAL_STORAGE
+uses-permission#android.permission.READ_MEDIA_IMAGES
 ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:6:5-7:38
-	android:maxSdkVersion
+	android:minSdkVersion
 		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:7:9-35
 	android:name
-		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:6:22-77
-uses-permission#android.permission.READ_MEDIA_IMAGES
-ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:8:5-76
+		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:6:22-73
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:8:5-9:38
+	android:maxSdkVersion
+		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:9:9-35
 	android:name
-		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:8:22-73
+		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:8:22-77
 application
-ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:10:5-29:19
-INJECTED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:10:5-29:19
+ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:11:5-30:19
+INJECTED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:11:5-30:19
 MERGED from [com.google.firebase:firebase-auth-ktx:23.0.0] /home/t/.gradle/caches/9.0.0/transforms/61076482a5eedac66ddb36474f470308/transformed/firebase-auth-ktx-23.0.0/AndroidManifest.xml:7:5-15:19
 MERGED from [com.google.firebase:firebase-auth-ktx:23.0.0] /home/t/.gradle/caches/9.0.0/transforms/61076482a5eedac66ddb36474f470308/transformed/firebase-auth-ktx-23.0.0/AndroidManifest.xml:7:5-15:19
 MERGED from [com.google.firebase:firebase-auth:23.0.0] /home/t/.gradle/caches/9.0.0/transforms/a4c702d3eb32687c02919cc03f4bdcfd/transformed/firebase-auth-23.0.0/AndroidManifest.xml:28:5-73:19
@@ -189,37 +191,37 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /home/t/.gradle/caches/9.0.
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.1] /home/t/.gradle/caches/9.0.0/transforms/1a8b2c298fa49da6d2d1cd606b25355c/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:15:9-35
+		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:16:9-35
 	android:label
-		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:13:9-41
+		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:14:9-41
 	android:roundIcon
-		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:14:9-54
+		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:15:9-54
 	android:largeHeap
-		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:17:9-33
+		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:18:9-33
 	android:icon
-		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:12:9-43
+		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:13:9-43
 	android:allowBackup
-		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:11:9-35
+		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:12:9-35
 	android:theme
-		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:16:9-47
+		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:17:9-47
 activity#com.manekelsa.app.MainActivity
-ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:19:9-27:20
+ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:20:9-28:20
 	android:windowSoftInputMode
-		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:22:13-55
+		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:23:13-55
 	android:exported
-		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:21:13-36
+		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:22:13-36
 	android:name
-		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:20:13-41
+		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:21:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:23:13-26:29
+ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:24:13-27:29
 action#android.intent.action.MAIN
-ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:24:17-69
+ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:25:17-69
 	android:name
-		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:24:25-66
+		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:25:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:25:17-77
+ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:26:17-77
 	android:name
-		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:25:27-74
+		ADDED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml:26:27-74
 uses-sdk
 INJECTED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/t/Desktop/dktpFld/Programming/projects/one/app/src/main/AndroidManifest.xml

@@ -74,7 +74,7 @@ fun WorkerProfileScreen(
     val context = LocalContext.current
     val isSaving by viewModel.isSaving.collectAsState()
     val saveSuccess by viewModel.saveSuccess.collectAsState()
-    val errorMessage by viewModel.errorMessage.collectAsState()
+    val errorMessageRes by viewModel.errorMessageRes.collectAsState()
     val nameInput by viewModel.nameInput.collectAsState()
     val phoneInput by viewModel.phoneInput.collectAsState()
     val areaInput by viewModel.areaInput.collectAsState()
@@ -90,7 +90,8 @@ fun WorkerProfileScreen(
         workerId?.let { viewModel.loadProfile(it) }
     }
 
-    LaunchedEffect(errorMessage) {
+    val errorMessage = errorMessageRes?.let { context.getString(it) }
+    LaunchedEffect(errorMessageRes) {
         errorMessage?.let {
             snackbarHostState.showSnackbar(it)
             viewModel.clearError()
